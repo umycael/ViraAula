@@ -1,0 +1,5 @@
+"use client";
+import { useEffect, useRef } from "react";
+import ResultCard from "./ResultCard";
+interface Props {resumo:string;aula:string;onReset:()=>void;reduceMotion?:boolean}
+export default function ResultCards({resumo,aula,onReset,reduceMotion=false}:Props){const ref=useRef<HTMLDivElement>(null);useEffect(()=>{window.scrollTo({top:0,behavior:reduceMotion?"auto":"smooth"});ref.current?.focus()},[reduceMotion]);return <div ref={ref} tabIndex={-1} className="results-wrap"><header className="results-head"><div><span className="results-label">Material de estudo</span><h1>Seu vídeo virou uma aula pronta para consultar.</h1></div><span className="analysis-kicker">Copie e leve para onde você estuda.</span></header><ResultCard index="01" title="Resumo do vídeo" copyLabel="Copiar resumo" content={resumo}/><ResultCard index="02" title="Aula completa" copyLabel="Copiar aula" content={aula}/><div className="results-reset"><button type="button" onClick={onReset}>← Analisar outro vídeo</button></div></div>}

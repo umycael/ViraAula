@@ -1,0 +1,4 @@
+"use client";
+import { useEffect, useRef } from "react";
+interface Props {url?:string;reduceMotion?:boolean}
+export default function ProcessingState({url=""}:Props){const title=useRef<HTMLHeadingElement>(null);useEffect(()=>title.current?.focus(),[]);const shown=url.replace(/^https?:\/\//i,"").slice(0,72);return <section className="loading-panel" role="status" aria-live="polite" aria-busy="true"><div className="loading-video" aria-hidden="true"><span className="loading-ring"/><svg width="34" height="30" viewBox="0 0 34 30" fill="none"><path d="M28 12.4a3 3 0 010 5.2l-15 8.66A3 3 0 018.5 23.66V6.34A3 3 0 0113 3.74l15 8.66z" fill="currentColor"/></svg></div><h2 ref={title} tabIndex={-1}>Estamos virando esse vídeo em uma aula.</h2><p>Extraindo as ideias principais e organizando o conteúdo em um material fácil de consultar.</p>{shown&&<span className="loading-url">Analisando: {shown}</span>}</section>}
