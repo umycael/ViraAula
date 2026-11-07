@@ -8,6 +8,9 @@ RUN mvn clean package -DskipTests
 # Roda o projeto
 FROM eclipse-temurin:21-jre
 
+# Versão do yt-dlp que foi testada com o projeto
+ARG YTDLP_VERSION=2026.10.26
+
 # Programas externos que o backend chama
 RUN apt-get update && apt-get install -y --no-install-recommends \
       ffmpeg python3 curl ca-certificates \
